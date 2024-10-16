@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Tonix22
+ * Copyright (c) 2024 Alpha
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,21 +25,21 @@
 #include "freertos/task.h"
 #include <stdio.h>
 
+// Base class for delay task
 class DelayTask : public Task 
 {
     private:
     int delay_ms;
 
     public:
-    
     DelayTask(int time) : Task ("DelayTask",4096,4), delay_ms(time) {}
 
+// Override the task function to define delay behavior
 void taskFunction() override
 {
-
-
     for(;;)
     {
+        // Delay the task execution
         vTaskDelay(delay_ms);
         printf("Delay task running \n");
     }
