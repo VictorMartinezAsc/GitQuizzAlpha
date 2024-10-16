@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Tonix22
+ * Copyright (c) 2024 Alpha
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <stdio.h>
+
 // Base class for all tasks
 class Task
 {
@@ -38,17 +39,17 @@ public:
     Task(const char* name, uint32_t stack, UBaseType_t prio) 
         : taskName(name), stackSize(stack), priority(prio), taskHandle(nullptr) {};
 
-    //Clas destructor
+    // Class destructor
     virtual ~Task() {}
 
-    // Virtual function to define the task's behavior
+    // Pure virtual function implemented to define the task's behavior
     virtual void taskFunction() = 0;
 
     // Start the task
     void start()
     {
         printf("Before start\n");
-        //Me -> taskFunction acccesing the pointer of an abstrac function
+        //Me -> taskFunction acccesing the pointer of an abstract function
         xTaskCreate([](void* obj) {static_cast<Task*>(obj)->taskFunction();}, taskName, stackSize, this, priority, &taskHandle);
         printf("After start\n");
     }
