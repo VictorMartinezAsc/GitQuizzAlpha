@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 #include "taskWrapper.h"
-#include "ledtask.h"
+#include "ledTask.h"
 #include "freertos/FreeRTOS.h"
 #include "delaytask.h"
 
@@ -31,22 +31,21 @@ using namespace std;
 extern "C" void app_main()
 {
     // Create LED task
-    LedTask ledTask1("LED Task 1", 4096, 3, GPIO_NUM_25, pdMS_TO_TICKS(2000)); // Blinks LED on pin 2 every 500ms
+    LedTask ledTask1("LED Task 1", 4096, 3, GPIO_NUM_25, pdMS_TO_TICKS(2000)); // Blinks LED on pin 25 every 2000ms
     ledTask1.start();
 
-    LedTask ledTask2("LED Task 2", 4096, 4, GPIO_NUM_26, pdMS_TO_TICKS(3000)); // Blinks LED on pin 3 every 1000ms
+    LedTask ledTask2("LED Task 2", 4096, 4, GPIO_NUM_26, pdMS_TO_TICKS(3000)); // Blinks LED on pin 26 every 3000ms
     ledTask2.start();
 
-    LedTask ledTask3("LED Task 3", 4096, 5, GPIO_NUM_27, pdMS_TO_TICKS(4000)); // Blinks LED on pin 3 every 1000ms
+    LedTask ledTask3("LED Task 3", 4096, 5, GPIO_NUM_27, pdMS_TO_TICKS(4000)); // Blinks LED on pin 27 every 4000ms
     ledTask3.start();
 
-    //DelayClass delay;
-    DelayTask delay(1000);
+    //Delay of the task
+    DelayTask delay(1000); 
     delay.start();
 
       while (1) {
         vTaskDelay(100 / portTICK_PERIOD_MS);
-        //delay.InMs(100);
     }
   
 }
