@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Tonix22
+ * Copyright (c) 2024 Alpha
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,12 +54,12 @@ public:
 
         for (;;)
         {
-            // Toggle the LED (pseudo-code)
+            // Toggle the LED state
             toggleLed(ledPin);
         }
     }
 
-    // Simple LED toggle function (pseudo-code)
+    // Function to toggle the LED state
     void toggleLed(gpio_num_t pin)
     {
         current_level ^=1; // 0 ^1 =1, 1  ^1 = 0
